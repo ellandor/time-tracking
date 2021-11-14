@@ -1,0 +1,88 @@
+{
+    "users": [
+        {
+            "name": "Jeremy Robson",
+            "icon": "/jeremy.png",
+            "info": {
+                "Daily": [
+                    {
+                        "mainText": "1hrs",
+                        "subText": "Last day - 3hrs"
+                    },
+                    {
+                        "mainText": "4hrs",
+                        "subText": "Last day - 1hrs"
+                    },
+                    {
+                        "mainText": "2hrs",
+                        "subText": "Last day - 2hrs"
+                    },
+                    {
+                        "mainText": "3hrs",
+                        "subText": "Last day - 1hrs"
+                    },
+                    {
+                        "mainText": "1hrs",
+                        "subText": "Last day - 3hrs"
+                    },
+                    {
+                        "mainText": "4hrs",
+                        "subText": "Last day - 1hrs"
+                    }
+                ],
+                "Weekly": [
+                    {
+                        "mainText": "10hrs",
+                        "subText": "Last week - 3hrs"
+                    },
+                    {
+                        "mainText": "4hrs",
+                        "subText": "Last week - 3hrs"
+                    },
+                    {
+                        "mainText": "2hrs",
+                        "subText": "Last week - 12hrs"
+                    },
+                    {
+                        "mainText": "3hrs",
+                        "subText": "Last week - 8hrs"
+                    },
+                    {
+                        "mainText": "12hrs",
+                        "subText": "Last week - 23hrs"
+                    },
+                    {
+                        "mainText": "11hrs",
+                        "subText": "Last week - 16hrs"
+                    }
+                ],
+                "Monthly": [
+                    {
+                        "mainText": "20hrs",
+                        "subText": "Last month - 9hrs"
+                    },
+                    {
+                        "mainText": "4hrs",
+                        "subText": "Last month - 30hrs"
+                    },
+                    {
+                        "mainText": "22hrs",
+                        "subText": "Last month - 12hrs"
+                    },
+                    {
+                        "mainText": "30hrs",
+                        "subText": "Last month - 20hrs"
+                    },
+                    {
+                        "mainText": "12hrs",
+                        "subText": "Last month - 23hrs"
+                    },
+                    {
+                        "mainText": "11hrs",
+                        "subText": "Last month - 16hrs"
+                    }
+                ]
+            }
+        }
+    ]
+}
