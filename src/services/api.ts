@@ -2,5 +2,5 @@ import axios from 'axios'
 
 
 export const API = axios.create({
-    baseURL: 'http://localhost:3004'
+    baseURL: 'https://a-json-db.herokuapp.com/'
 })
