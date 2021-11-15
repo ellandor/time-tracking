@@ -12,13 +12,16 @@ export const Container = styled.div`
         border-radius: 12px;
     }
     
-    .card > svg {
+    .card > span {
         position: absolute;
-        top: -.5rem;
-        left: 70%;
-        transform: rotate(40deg);
-        filter: brightness(.7);
-        opacity: .5;
+        top: -1rem;
+        left: calc(100% - ${props => props.style?.width + 'px'} - 3rem);
+    }
+
+    .card-4 {
+        span {
+            top: -.1rem;
+        }
     }
     
     .draft {
@@ -47,14 +50,15 @@ export const Container = styled.div`
             header {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
     
                 h2 {
                     font-weight: 400;
                     font-size: 1.1rem;
                 }
     
-                svg:hover {
-                    fill: white;
+                img:hover {
+                    filter: brightness(170%);
                 }
             }
     
@@ -73,8 +77,8 @@ export const Container = styled.div`
     }
 
     @media (max-width: 425px) {
-        .card > svg {
-            left: 75%;
+        .card > span {
+            left: calc(100% - ${props => props.style?.width + 'px'} - 3rem);
         }
 
         .draft {

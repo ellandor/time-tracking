@@ -2,11 +2,6 @@ import { Container } from './style'
 
 import Image from 'next/image'
 
-import { BsFillBriefcaseFill, BsFillChatDotsFill } from 'react-icons/bs'
-import { IoLogoGameControllerB } from 'react-icons/io'
-import { GiOpenBook, GiHeartPlus } from 'react-icons/gi'
-import { BiRun } from 'react-icons/bi'
-
 import { Card } from '../Card'
 import { useEffect, useState } from 'react'
 import { API } from '../../services/api'
@@ -44,7 +39,13 @@ export function Home() {
         <Container>
             <div className="profile-wrapper">
                 <div className="top">
-                    <Image src={user.icon} alt={user.name} width={80} height={80} layout="fixed" />
+                    <Image
+                        src={user.icon}
+                        alt={user.name}
+                        width={80}
+                        height={80}
+                        layout="fixed"
+                    />
 
                     <div className="info">
                         <p>Report for</p>
@@ -70,39 +71,44 @@ export function Home() {
 
             <Card
                 bg="var(--light-orange)"
-                icon={BsFillBriefcaseFill}
+                icon="/images/icon-work.svg"
                 title="Work"
+                size={[85, 85]}
                 mainText={user.info[content][0].mainText}
                 subText={user.info[content][0].subText}
                 className="card-1"
             />
             <Card
                 bg={'var(--soft-blue)'}
-                icon={IoLogoGameControllerB}
+                icon="/images/icon-play.svg"
                 title="Play"
+                size={[90, 90]}
                 mainText={user.info[content][1].mainText}
                 subText={user.info[content][1].subText}
                 className="card-2"
             />
             <Card
                 bg={'var(--light-red)'}
-                icon={GiOpenBook}
+                icon="/images/icon-study.svg"
                 title="Study"
+                size={[90, 90]}
                 mainText={user.info[content][2].mainText}
                 subText={user.info[content][2].subText}
                 className="card-3"
             />
             <Card
                 bg={'var(--lime-green)'}
-                icon={BiRun}
+                icon="/images/icon-exercise.svg"
                 title="Exercise"
+                size={[80, 60]}
                 mainText={user.info[content][3].mainText}
                 subText={user.info[content][3].subText}
                 className="card-4"
             />
             <Card
                 bg={'var(--violet)'}
-                icon={BsFillChatDotsFill}
+                icon="/images/icon-social.svg"
+                size={[80, 100]}
                 title="Social"
                 mainText={user.info[content][4].mainText}
                 subText={user.info[content][4].subText}
@@ -110,8 +116,9 @@ export function Home() {
             />
             <Card
                 bg={'var(--yellow)'}
-                icon={GiHeartPlus}
+                icon="/images/icon-self-care.svg"
                 title="Self Care"
+                size={[75, 75]}
                 mainText={user.info[content][5].mainText}
                 subText={user.info[content][5].subText}
                 className="card-6"

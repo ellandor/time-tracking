@@ -1,29 +1,48 @@
-import { IconType } from 'react-icons'
+import Image from 'next/image'
 import { Container } from './style'
 
-import { FaEllipsisH } from 'react-icons/fa'
-
 type CardProps = {
-    bg:         string
-    icon:       IconType
+    bg: string
+    icon: string
+    size?: [number, number]
 
-    title:      string
-    mainText:   string
-    subText:    string
+    title: string
+    mainText: string
+    subText: string
 
     className?: string
 }
 
-export function Card({ icon: Icon, bg, title, mainText, subText, className }: CardProps) {
+export function Card({
+    icon,
+    bg,
+    size,
+    title,
+    mainText,
+    subText,
+    className,
+}: CardProps) {
+    size ||= [72, 72]
+    
     return (
-       <Container style={{ background: bg }}>
-           <div className={`card ${className || ''}`}>
-                <Icon size={72} color={bg}/>
+        <Container style={{ background: bg, width: size[0].toString() }}>
+            <div className={`card ${className || ''}`}>
+                <Image
+                    src={icon}
+                    {...{ width: size[0], height: size[1] }}
+                    layout="fixed"
+                    className="card-image"
+                />
                 <div className="draft">
                     <div className="content">
                         <header>
                             <h2>{title}</h2>
-                            <FaEllipsisH size={20} color="var(--pale-blue)" />
+                            <Image
+                                src="/images/icon-ellipsis.svg"
+                                width={20}
+                                height={5}
+                                layout="fixed"
+                            />
                         </header>
 
                         <div className="info">
@@ -33,6 +52,6 @@ export function Card({ icon: Icon, bg, title, mainText, subText, className }: Ca
                     </div>
                 </div>
             </div>
-       </Container>
+        </Container>
     )
 }
