@@ -26,18 +26,12 @@ Users should be able to:
 
 ### 🔨 Built with
 
-Frontend
-
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
 - CSS Grid
 - ~~Mobile-first workflow~~ (Desktop-first workflow)
 - [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
 - [Styled Components](https://styled-components.com/) - For styles
 - [Typescript](https://www.typescriptlang.org/) - For types
-
-Backend
-
-- [Next.js](https://nextjs.org/) - For API
-- [json-server](https://github.com/typicode/json-server) - For database
