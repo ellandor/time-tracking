@@ -37,10 +37,6 @@ export const Container = styled.div`
         font-family: 'Rubik', sans-serif;
         color: white;
 
-        &:hover {
-            background: #34387a;
-        }
-
         .content {
             margin: 0 auto;
 
@@ -75,6 +71,12 @@ export const Container = styled.div`
                 color: var(--pale-blue);
                 font-size: 0.9rem;
             }
+        }
+    }
+
+    @media (min-width: 769px) {
+        .content-wrapper:hover {
+            background: #34387a;
         }
     }
 
