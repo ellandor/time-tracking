@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     background: ${props => props.style?.background};
-    cursor: pointer;
 
     border-radius: 12px;
     overflow: hidden;
@@ -33,6 +32,7 @@ export const Container = styled.div`
         width: 100%;
         padding: 2rem;
         border-radius: 12px 12px 0 0;
+        cursor: pointer;
 
         font-family: 'Rubik', sans-serif;
         color: white;
