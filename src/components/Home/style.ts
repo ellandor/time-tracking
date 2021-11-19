@@ -5,97 +5,102 @@ export const Container = styled.div`
     max-height: 512px;
 
     width: 95%;
-    height: 100%;
 
     display: grid;
-    gap: 20px;
+    gap: 1.6rem;
 
     grid-template:
-        'profile-wrapper card-1 card-2 card-3' 1fr
-        'profile-wrapper card-4 card-5 card-6' 1fr / 1fr 1fr 1fr 1fr;
+        'main-card card-1 card-2 card-3' 1fr
+        'main-card card-4 card-5 card-6' 1fr
+        / 1fr 1fr 1fr 1fr;
 
-    .profile-wrapper {
+    .main-card {
         display: flex;
         flex-direction: column;
 
         position: relative;
         height: 100%;
         background: var(--dark-blue);
-        
-        &, .top {
+
+        &,
+        .profile {
             border-radius: 12px;
         }
 
-        .top {
+        .profile {
             display: flex;
             flex-direction: column;
+
+            background: var(--blue);
+            width: 100%;
+            height: 67%;
+            padding: 2rem;
+
+            &__image {
+                width: 80px;
+                height: 80px;
+
+                // Override next/image border
+                border: 2px solid white !important;
+
+                border-radius: 50%;
+            }
+
+            &__info {
+                p,
+                .profile__username {
+                    font-weight: 300;
+                }
+
+                p {
+                    margin-top: 2rem;
+                    margin-bottom: 0.2rem;
+
+                    font-size: 1rem;
+                    color: var(--pale-blue);
+                }
+
+                .profile__username {
+                    font-size: 2.5rem;
+                    color: white;
+                }
+            }
         }
 
-        nav {
+        .stats {
             padding: 2rem;
             height: 33%;
+
+            &__selected {
+                color: white;
+            }
 
             ul {
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-    
+
                 li a {
-                    color: var(--desaturated-blue);
                     font-size: 1.1rem;
 
-                    transition: color .3s ease-out;
+                    transition: color 0.3s ease-out;
                     cursor: pointer;
 
-                    &:not(.selected):hover {
-                        color: white;
+                    &:not([class*='stats__selected']) {
+                        color: var(--desaturated-blue);
+
+                        &:hover {
+                            color: white;
+                        }
                     }
                 }
             }
-    
-            .selected {
-                color: white;
-            }
-        }
-
-
-        img {
-            width: 80px;
-            height: 80px;
-
-            border: 2px solid white !important;
-            border-radius: 50%;
-        }
-
-        p,
-        strong {
-            font-weight: 300;
-        }
-
-        p {
-            margin-top: 2rem;
-            margin-bottom: .2rem;
-
-            font-size: 1rem;
-            color: var(--pale-blue);
-        }
-
-        strong {
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        .top {
-            background: var(--blue);
-            width: 100%;
-            height: 67%;
-            padding: 2rem;
         }
     }
 
-    .profile-wrapper {
-        grid-area: profile-wrapper;
+    .main-card {
+        grid-area: main-card;
     }
     .card-1 {
         grid-area: card-1;
@@ -123,41 +128,38 @@ export const Container = styled.div`
 
     @media (max-width: 768px) and (min-width: 426px) {
         grid-template:
-            'profile-wrapper card-1' minmax(200px, 1fr)
-            'profile-wrapper card-2' minmax(200px, 1fr)
-            '.               card-3' minmax(200px, 1fr)
-            '.               card-4' minmax(200px, 1fr)
-            '.               card-5' minmax(200px, 1fr)
-            '.               card-6' minmax(200px, 1fr) / minmax(150px, 1fr) 1fr;
+            'main-card card-1' 1fr
+            'main-card card-2' 1fr
+            'card-3    card-5' 1fr
+            'card-4    card-6' 1fr / 1fr 1fr;
     }
 
     @media (max-width: 425px) {
         grid-template:
-            'profile-wrapper' 1fr
-            'card-1' minmax(150px, 1fr)
-            'card-2' minmax(150px, 1fr)
-            'card-3' minmax(150px, 1fr)
-            'card-4' minmax(150px, 1fr)
-            'card-5' minmax(150px, 1fr)
-            'card-6' minmax(150px, 1fr) / minmax(150px, 1fr);
+            'main-card' 1fr
+            'card-1' auto
+            'card-2' auto
+            'card-3' auto
+            'card-4' auto
+            'card-5' auto
+            'card-6' auto / 1fr;
 
-        .profile-wrapper {
-            .top {
+        .main-card {
+            .profile {
                 flex-direction: row;
 
-                .info {
+                &__info {
                     margin-left: 1rem;
 
-                    strong {
+                    .profile__username {
                         font-size: 1.33rem;
                     }
                 }
             }
 
-            nav ul {
+            .stats ul {
                 flex-direction: row;
             }
         }
-        
     }
 `

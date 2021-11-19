@@ -17,49 +17,50 @@ type User = {
     }
 }
 
-const filterTypes = ['Daily', 'Weekly', 'Monthly']
+const allStats = ['Daily', 'Weekly', 'Monthly']
 
 export function Home() {
-    const [content, setContent] = useState('Weekly')
+    const [stat, setStat] = useState('Weekly')
     const [user, setUser] = useState({} as User)
 
-    function toggleContent(value: string) {
-        setContent(value)
+    function togglestats(value: string) {
+        setStat(value)
     }
 
     useEffect(() => {
-        API.get('/users').then(r => {
-            setUser(r.data[0])
-        })
+        API.get('/users').then(r => setUser(r.data[0])).catch(e => console.log(e))
     }, [])
 
     if (!user.info) return <></>
 
+    const texts = user.info[stat]
+
     return (
         <Container>
-            <div className="profile-wrapper">
-                <div className="top">
+            <div className="main-card">
+                <div className="profile">
                     <Image
                         src={user.icon}
                         alt={user.name}
                         width={80}
                         height={80}
                         layout="fixed"
+                        className="profile__image"
                     />
 
-                    <div className="info">
+                    <div className="profile__info">
                         <p>Report for</p>
-                        <strong>Jeremy Robson</strong>
+                        <strong className="profile__username">Jeremy Robson</strong>
                     </div>
                 </div>
 
-                <nav>
+                <nav className="stats">
                     <ul>
-                        {filterTypes.map(k => (
+                        {allStats.map(k => (
                             <li key={k}>
                                 <a
-                                    className={content === k ? 'selected' : ''}
-                                    onClick={() => toggleContent(k)}
+                                    className={stat === k ? 'stats__selected' : ''}
+                                    onClick={() => togglestats(k)}
                                 >
                                     {k}
                                 </a>
@@ -74,8 +75,8 @@ export function Home() {
                 icon="/images/icon-work.svg"
                 title="Work"
                 size={[85, 85]}
-                mainText={user.info[content][0].mainText}
-                subText={user.info[content][0].subText}
+                mainText={texts[0].mainText}
+                subText={texts[0].subText}
                 className="card-1"
             />
             <Card
@@ -83,8 +84,8 @@ export function Home() {
                 icon="/images/icon-play.svg"
                 title="Play"
                 size={[90, 90]}
-                mainText={user.info[content][1].mainText}
-                subText={user.info[content][1].subText}
+                mainText={texts[1].mainText}
+                subText={texts[1].subText}
                 className="card-2"
             />
             <Card
@@ -92,8 +93,8 @@ export function Home() {
                 icon="/images/icon-study.svg"
                 title="Study"
                 size={[90, 90]}
-                mainText={user.info[content][2].mainText}
-                subText={user.info[content][2].subText}
+                mainText={texts[2].mainText}
+                subText={texts[2].subText}
                 className="card-3"
             />
             <Card
@@ -101,8 +102,8 @@ export function Home() {
                 icon="/images/icon-exercise.svg"
                 title="Exercise"
                 size={[80, 60]}
-                mainText={user.info[content][3].mainText}
-                subText={user.info[content][3].subText}
+                mainText={texts[3].mainText}
+                subText={texts[3].subText}
                 className="card-4"
             />
             <Card
@@ -110,8 +111,8 @@ export function Home() {
                 icon="/images/icon-social.svg"
                 size={[80, 100]}
                 title="Social"
-                mainText={user.info[content][4].mainText}
-                subText={user.info[content][4].subText}
+                mainText={texts[4].mainText}
+                subText={texts[4].subText}
                 className="card-5"
             />
             <Card
@@ -119,8 +120,8 @@ export function Home() {
                 icon="/images/icon-self-care.svg"
                 title="Self Care"
                 size={[75, 75]}
-                mainText={user.info[content][5].mainText}
-                subText={user.info[content][5].subText}
+                mainText={texts[5].mainText}
+                subText={texts[5].subText}
                 className="card-6"
             />
         </Container>

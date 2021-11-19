@@ -39,6 +39,15 @@ export const GlobalStyle = createGlobalStyle`
     html, body, #__next {
         width: 100%;
         height: 100%;
+
+        /* 
+            For some reason if I don't reset this,
+            the height on mobile is limited to just 100vh
+        */
+
+        @media (max-width: 768px) {
+            height: auto;
+        }
     }
 
     body {
