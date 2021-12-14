@@ -2,7 +2,22 @@ import Head from 'next/head'
 
 import { Home } from '../components/Home'
 
-export default function _() {
+import { promises as fs } from 'fs'
+import path from 'path'
+
+export async function getStaticProps() {
+    return {
+        props: {
+            users: JSON.parse(
+                await fs.readFile(
+                    path.join(process.cwd(), 'src', 'data.json'),
+                'utf8')
+            ).users
+        }
+    }
+}
+
+export default function _(data: any) {
     return (
         <>
             <Head>
@@ -23,7 +38,7 @@ export default function _() {
                 <title>Time Tracking</title>
             </Head>
 
-            <Home />
+            <Home data={data}/>
         </>
     )
 }

@@ -3,8 +3,7 @@ import { Container } from './style'
 import Image from 'next/image'
 
 import { Card } from '../Card'
-import { useEffect, useState } from 'react'
-import { API } from '../../services/api'
+import { useMemo, useState } from 'react'
 
 type User = {
     name: string
@@ -17,23 +16,18 @@ type User = {
     }
 }
 
-const allStats = ['Daily', 'Weekly', 'Monthly']
-
-export function Home() {
-    const [stat, setStat] = useState('Weekly')
-    const [user, setUser] = useState({} as User)
-
-    function togglestats(value: string) {
-        setStat(value)
+type HomeProps = {
+    data: {
+        users: User[]
     }
+}
 
-    useEffect(() => {
-        API.get('/users').then(r => setUser(r.data[0])).catch(e => console.log(e))
-    }, [])
+export function Home({ data }: HomeProps) {
+    const [stat, setStat] = useState('Weekly')
 
-    if (!user.info) return <></>
-
-    const texts = user.info[stat]
+    const user = useMemo(() => data.users[0], [data])
+    const allStats = useMemo(() => ['Daily', 'Weekly', 'Monthly'], [])
+    const texts = useMemo(() => user.info[stat], [stat, user.info])
 
     return (
         <Container>
@@ -50,7 +44,9 @@ export function Home() {
 
                     <div className="profile__info">
                         <p>Report for</p>
-                        <strong className="profile__username">Jeremy Robson</strong>
+                        <strong className="profile__username">
+                            Jeremy Robson
+                        </strong>
                     </div>
                 </div>
 
@@ -59,8 +55,10 @@ export function Home() {
                         {allStats.map(k => (
                             <li key={k}>
                                 <a
-                                    className={stat === k ? 'stats__selected' : ''}
-                                    onClick={() => togglestats(k)}
+                                    className={
+                                        stat === k ? 'stats__selected' : ''
+                                    }
+                                    onClick={() => setStat(k)}
                                 >
                                     {k}
                                 </a>
